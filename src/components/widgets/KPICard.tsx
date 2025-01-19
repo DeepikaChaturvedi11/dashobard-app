@@ -5,7 +5,6 @@ interface KPIProps {
   value: string;
   growth: string;
 }
-
 const KPICard: React.FC<KPIProps> = ({ title, value, growth }) => {
   return (
     <div className="bg-white dark:bg-gray-900 p-4 shadow-md rounded-lg">

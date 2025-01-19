@@ -1,6 +1,5 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-
 const barData = [
   { month: 'Jan', target: 4000, actual: 3900 },
   { month: 'Feb', target: 3500, actual: 3700 },

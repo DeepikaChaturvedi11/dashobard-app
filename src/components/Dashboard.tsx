@@ -2,13 +2,11 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Widget from "../components/Widget";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
 import RealTimeLineChart from "./widgets/RealTimeLineChart";
 const Dashboard: React.FC = () => {
-  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
   return (
-    <div className={isDarkMode ? "dark" : ""}>
+    <div className="dark">
+
       <div className="flex flex-col md:flex-row">
         <Sidebar />
         <div className="flex-1 bg-gray-100 dark:bg-gray-800 min-h-screen">
@@ -22,7 +20,7 @@ const Dashboard: React.FC = () => {
           </main>
         </div>
       </div>
-    </div>
+      </div>
   );
 };
 export default Dashboard;

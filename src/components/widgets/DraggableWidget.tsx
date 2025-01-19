@@ -21,7 +21,6 @@ const DraggableWidget: React.FC = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-
       <Droppable droppableId="widgets">
         {(provided) => (
           <div

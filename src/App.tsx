@@ -1,6 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from './store';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import PieChartWidget from './components/widgets/PieChartWidget';
@@ -9,15 +7,10 @@ import KPICard from './components/widgets/KPICard';
 import RealTimeLineChart from './components/widgets/RealTimeLineChart';
 import DateRangeSelector from './components/DateRangeSelector';
 import BarChartWidget from './components/widgets/BarChartWidget';
-import { store } from './store';
-import { Provider } from 'react-redux';
 
 const App: React.FC = () => {
-  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
 
   return (
-    <Provider store={store}>
-      <div className={isDarkMode ? 'dark' : ''}>
         <div className="flex h-screen">
           <Sidebar />
           <div className="flex-1 bg-gray-100 dark:bg-gray-800">
@@ -43,8 +36,7 @@ const App: React.FC = () => {
             </main>
           </div>
         </div>
-      </div>
-    </Provider>
+     
   );
 };
 
