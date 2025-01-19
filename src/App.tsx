@@ -9,11 +9,16 @@ import './index.css';
 import KPICard from './components/widgets/KPICard';
 import RealTimeLineChart from './components/widgets/RealTimeLineChart';
 import DateRangeSelector from './components/DateRangeSelector';
+import BarChartWidget from './components/widgets/BarChartWidget';
+import { store } from './store';
+import { Provider } from 'react-redux';
 
 const App: React.FC = () => {
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
 
   return (
+    <Provider store={store}>
+
     <div className={isDarkMode ? 'dark' : ''}>
       <div className="flex h-screen">
         <Sidebar />
@@ -32,10 +37,13 @@ const App: React.FC = () => {
             <PieChartWidget />
             <DraggableWidget />
             <DateRangeSelector />
+            <BarChartWidget/>
           </main>
         </div>
       </div>
     </div>
+    </Provider>
+
   );
 };
 
