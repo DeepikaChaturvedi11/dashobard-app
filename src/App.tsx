@@ -4,7 +4,6 @@ import { RootState } from './store';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import PieChartWidget from './components/widgets/PieChartWidget';
-import DraggableWidget from './components/widgets/DraggableWidget';
 import './index.css';
 import KPICard from './components/widgets/KPICard';
 import RealTimeLineChart from './components/widgets/RealTimeLineChart';
@@ -18,32 +17,34 @@ const App: React.FC = () => {
 
   return (
     <Provider store={store}>
+      <div className={isDarkMode ? 'dark' : ''}>
+        <div className="flex h-screen">
+          <Sidebar />
+          <div className="flex-1 bg-gray-100 dark:bg-gray-800">
+            <Header />
+            <main className="p-6 space-y-6">
+              {/* KPI Cards Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <KPICard title="Revenue" value="$12,345" growth={'+5%'} />
+                <KPICard title="Users" value="1,234" growth={'+10%'} />
+                <KPICard title="Sales" value="567" growth={'-3%'} />
+                <KPICard title="Performance" value="85%" growth={'+7%'} />
+              </div>
 
-    <div className={isDarkMode ? 'dark' : ''}>
-      <div className="flex h-screen">
-        <Sidebar />
-
-        <div className="flex-1 bg-gray-100 dark:bg-gray-800">
-          <Header />
-          <main className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {/* KPI Cards */}
-            <KPICard title="Revenue" value="$12,345" growth={''} />
-            <KPICard title="Users" value="1,234" growth={''} />
-            <KPICard title="Sales" value="567" growth={''} />
-            <KPICard title="Performance" value="85%" growth={''} />
-
-            {/* Widgets */}
-            <RealTimeLineChart />
-            <PieChartWidget />
-            <DraggableWidget />
-            <DateRangeSelector />
-            <BarChartWidget/>
-          </main>
+              {/* Chart Rows */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <RealTimeLineChart />
+                <PieChartWidget />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <BarChartWidget />
+                <DateRangeSelector />
+              </div>
+            </main>
+          </div>
         </div>
       </div>
-    </div>
     </Provider>
-
   );
 };
 
