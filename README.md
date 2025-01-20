@@ -1,7 +1,13 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*Before running the app, you need to install all the required dependencies. 
+You can do that by running the following command:-
 
+npm install
+Once the installation is complete, you can start the app in development mode with:
+
+npm start
 ## Available Scripts
 
 In the project directory, you can run:
