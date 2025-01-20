@@ -1,12 +1,12 @@
-import React from "react";
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
+import React, { Suspense } from "react";
+import Sidebar from "./layout/Sidebar";
+import Header from "./layout/Header";
 import Widget from "../components/Widget";
-import RealTimeLineChart from "./widgets/RealTimeLineChart";
+const LineChart = React.lazy(() => import("./widgets/RealTimeLineChart"));
+const PieChartWidget = React.lazy(() => import("./widgets/PieChartWidget"));
 const Dashboard: React.FC = () => {
   return (
     <div className="dark">
-
       <div className="flex flex-col md:flex-row">
         <Sidebar />
         <div className="flex-1 bg-gray-100 dark:bg-gray-800 min-h-screen">
@@ -16,11 +16,15 @@ const Dashboard: React.FC = () => {
             <Widget title="Sales" />
             <Widget title="Users" />
             <Widget title="Performance" />
-            <RealTimeLineChart />
+            <Suspense fallback={<div>Loading...</div>}>
+              <LineChart />
+              <PieChartWidget />
+            </Suspense>
           </main>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
+
 export default Dashboard;
